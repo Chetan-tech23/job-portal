@@ -39,14 +39,14 @@ export default function Profile() {
 
   return (
     <>
-      {/* Header with global edit/save */}
+      {/* Header */}
       <div className="section space-between">
         <h3>Profile</h3>
         <div className="space-between" style={{ gap: 12 }}>
           <div className="small">{user.progress}/100</div>
-          <button className="nav-item" onClick={() => setEdit(!edit)}>
+          <div className="link" onClick={() => setEdit(!edit)}>
             {edit ? "Save" : "Edit"}
-          </button>
+          </div>
         </div>
       </div>
 
@@ -160,7 +160,7 @@ export default function Profile() {
         </div>
       </div>
 
-      {/* Education (read-only) */}
+      {/* Education */}
       <div className="card section">
         <h3>Education</h3>
         <div className="list">

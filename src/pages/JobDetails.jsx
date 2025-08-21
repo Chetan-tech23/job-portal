@@ -12,8 +12,8 @@ export default function JobDetail() {
   return (
     <>
       <div className="section row">
-        <button onClick={() => nav(-1)} className="nav-item">
-          ← Back
+        <button onClick={() => nav(-1)} className="list">
+          ◀️
         </button>
         <h3 style={{ marginLeft: 8 }}>Job Description</h3>
       </div>
