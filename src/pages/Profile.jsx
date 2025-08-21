@@ -6,16 +6,18 @@ export default function Profile() {
   const [user, setUser] = useState(seedUser);
   const [edit, setEdit] = useState(false);
 
-  // load from localStorage first time
+  // Load saved user profile from localStorage
   useEffect(() => {
     const cached = localStorage.getItem("user");
-    if (cached) setUser(JSON.parse(cached));
+    if (cached) {
+      setUser(JSON.parse(cached));
+    }
   }, []);
 
-  // save on change
-  useEffect(() => {
+  const handleSave = () => {
     localStorage.setItem("user", JSON.stringify(user));
-  }, [user]);
+    setEdit(false);
+  };
 
   const onChange = (path, value) => {
     setUser((prev) => {
@@ -44,9 +46,15 @@ export default function Profile() {
         <h3>Profile</h3>
         <div className="space-between" style={{ gap: 12 }}>
           <div className="small">{user.progress}/100</div>
-          <div className="link" onClick={() => setEdit(!edit)}>
-            {edit ? "Save" : "Edit"}
-          </div>
+          {edit ? (
+            <div className="link" onClick={handleSave}>
+              Save
+            </div>
+          ) : (
+            <div className="link" onClick={() => setEdit(true)}>
+              Edit
+            </div>
+          )}
         </div>
       </div>
 
